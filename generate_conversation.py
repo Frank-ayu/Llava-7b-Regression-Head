@@ -17,8 +17,8 @@ class FoodImageProcessor:
         self.api_url = "https://api.doubao.com/chat/completions"  # 豆包API地址(请确认最新地址)
         # 英文问题列表，添加了限制只回答问题的提示
         self.questions = [
-            "Please tell me the preparation method of this dish. Answer only the question without extra explanation.",
-            "Please develop a suitable diet plan for this dish. Answer only the question without extra explanation.",
+            "Could you tell me the preparation method of this dish? Answer only the question without extra explanation.",
+            "Could you develop a suitable diet plan for this dish? Answer only the question without extra explanation.",
             "What common allergens might this dish contain? Answer only the question without extra explanation.",
             "What foods is this dish suitable to be paired with? Answer only the question without extra explanation."
         ]
@@ -95,7 +95,7 @@ class FoodImageProcessor:
                 
                 # 添加到训练数据
                 training_data.append({
-                    "instruction": question.split(". ")[0],  # 移除回答格式限制提示
+                    "instruction": question.split("? ")[0],  # 移除回答格式限制提示
                     "input": "",
                     "output": answer,
                     "images": [image_path]
